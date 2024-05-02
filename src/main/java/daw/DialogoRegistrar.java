@@ -4,6 +4,8 @@
  */
 package daw;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tomas
@@ -12,6 +14,9 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
     // Variables
     private boolean passwordVisible = false;
+    private String nombre;
+    private String password1;
+    private String password2Comprobacion;
 
     /**
      * Creates new form VentanaPrincipal
@@ -31,15 +36,15 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        jNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         eyePassword = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         passwd1 = new javax.swing.JPasswordField();
-        passwd2 = new javax.swing.JPasswordField();
+        passwd2Comprobacion = new javax.swing.JPasswordField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -47,11 +52,11 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("nombre...");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jNombre.setForeground(new java.awt.Color(204, 204, 204));
+        jNombre.setText("nombre...");
+        jNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jNombreActionPerformed(evt);
             }
         });
 
@@ -66,10 +71,10 @@ public class DialogoRegistrar extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Registrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -84,7 +89,7 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
         passwd1.setText("jPasswordField1");
 
-        passwd2.setText("jPasswordField2");
+        passwd2Comprobacion.setText("jPasswordField2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +101,7 @@ public class DialogoRegistrar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(eyePassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnRegistrar)
                         .addGap(65, 65, 65)
                         .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
@@ -107,8 +112,8 @@ public class DialogoRegistrar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwd1)
-                            .addComponent(jTextField1)
-                            .addComponent(passwd2))))
+                            .addComponent(jNombre)
+                            .addComponent(passwd2Comprobacion))))
                 .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
@@ -116,7 +121,7 @@ public class DialogoRegistrar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -125,11 +130,11 @@ public class DialogoRegistrar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwd2Comprobacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eyePassword)
-                    .addComponent(jButton2)
+                    .addComponent(btnRegistrar)
                     .addComponent(btnCancelar))
                 .addGap(36, 36, 36))
         );
@@ -137,9 +142,9 @@ public class DialogoRegistrar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jNombreActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
@@ -152,18 +157,34 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
         if (passwordVisible) { // la oculto
             passwd1.setEchoChar('*');
-            passwd2.setEchoChar('*');
+            passwd2Comprobacion.setEchoChar('*');
             passwordVisible = false;
         } else { // la pongo visible
             passwd1.setEchoChar((char) 0);
-            passwd2.setEchoChar((char) 0);
+            passwd2Comprobacion.setEchoChar((char) 0);
             passwordVisible = true;
         }
     }//GEN-LAST:event_eyePasswordActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        char[] pswd1 = passwd1.getPassword();
+        char[] pswd2 = passwd2Comprobacion.getPassword();
+        nombre = jNombre.getText();
+        password1 = new String(pswd1);
+        password2Comprobacion = new String(pswd2);
+
+        if (!(password1.equals(password2Comprobacion))) {
+            JOptionPane.showMessageDialog(null, "ERRORR. LAS CONCRATEÑAS NO COINCIDEN");
+            VentanaPrincipal v = new VentanaPrincipal();
+            v.setVisible(true);
+            this.setVisible(false);
+        } else {
+            Metodo.añadirRegistroUsuario(nombre, password1);
+            VentanaPrincipal v = new VentanaPrincipal();
+            v.setVisible(true);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,15 +224,15 @@ public class DialogoRegistrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton eyePassword;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jNombre;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField passwd1;
-    private javax.swing.JPasswordField passwd2;
+    private javax.swing.JPasswordField passwd2Comprobacion;
     // End of variables declaration//GEN-END:variables
 }

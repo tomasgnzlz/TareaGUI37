@@ -9,17 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author tomas
  */
 public class Metodo {
-
-    public static void main(String[] args) {
-        System.out.println("Existe el usuario tomas3, passwd: 73  --> " + comprobarUsuario("Tomas3", "73"));
-
-    }
 
     public static final String NOMBRE_FICHERO = "usuarios.csv";
 
@@ -57,21 +53,56 @@ public class Metodo {
 
     // Método que comprueba si eres un usuario o no.
     public static boolean comprobarUsuario(String nombre, String password) {
-
         List<Usuarios> listaUsuarios = new ArrayList<>();
         listaUsuarios = listaUsuarios();
         boolean encontrado = false;
         for (Usuarios aux : listaUsuarios) {
             if (aux.getNombre().equals(nombre)) {
                 if (aux.getPassword().equals(password)) {
-                    System.out.println("Si existe ese usuario en los registros");
                     encontrado = true;
                     break;
                 }
             }
         }
-
         return encontrado;
     }
 
+    public static void añadirRegistroUsuario(String nombre, String password) {
+        List<Usuarios> listaUsuarios = listaUsuarios();
+        boolean existe = false;
+
+        for (Usuarios Uaux : listaUsuarios) {
+            if (Uaux.getNombre().equals(nombre)) {
+                JOptionPane.showMessageDialog(null, "SE HA MODIFICADO LA CONTRASEÑA DEL USUARIO: " + nombre.toUpperCase());
+                Uaux.setPassword(password);
+                existe = true;
+                break;
+            }
+        }
+        if (!existe) {
+            Usuarios userAux = new Usuarios(nombre, password);
+            listaUsuarios.add(userAux);
+            JOptionPane.showMessageDialog(null, "SE HA REGISTRADO EL USUARIO: " + nombre.toUpperCase());
+        }
+
+        // Una vez tengo añadido el usuario a la lista o la modificacion de la 
+        // passwd escribo escribo el csv
+        escrituraRegistro(listaUsuarios);
+    }
+
+    // Método que escribe la lista de usuarios al csv una vez de añade o modifican
+    public static void escrituraRegistro(List<Usuarios> listaUsuarios) {
+        List<String> listaStrings = new ArrayList<>();
+        listaStrings.add("Nombre,Password");
+        for (Usuarios aux : listaUsuarios) {
+            listaStrings.add(aux.toString2());
+        }
+
+        //Ahora hago la escritura de la lista de Strings
+        try {
+            Files.write(Paths.get(NOMBRE_FICHERO), listaStrings);
+        } catch (IOException e) {
+            System.out.println("ERROR AL ESCRIBRI EN EL FICHERO");
+        }
+    }
 }
