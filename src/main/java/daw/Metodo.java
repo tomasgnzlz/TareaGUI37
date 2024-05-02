@@ -17,8 +17,11 @@ import java.util.List;
 public class Metodo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Existe el usuario tomas3, passwd: 73  --> " + comprobarUsuario("Tomas3", "73"));
+
     }
+
+    public static final String NOMBRE_FICHERO = "usuarios.csv";
 
     // Método que lee el fichero y lo convierte a una lista de usuarios
     // Método para leer un fichero csv y guardarlo en una lista de String
@@ -37,7 +40,9 @@ public class Metodo {
         return lista;
     }
 
-    public static List<Usuarios> listaUsuarios(List<String> listaString) {
+    public static List<Usuarios> listaUsuarios() {
+        List<String> listaString = new ArrayList<>();
+        listaString = leerFichero(NOMBRE_FICHERO);
         List<Usuarios> listaUsuarios = new ArrayList<>();
         for (String l : listaString) {
             // Separo la lineas por las comas que tengan
@@ -49,10 +54,24 @@ public class Metodo {
         }
         return listaUsuarios;
     }
-    
+
     // Método que comprueba si eres un usuario o no.
-    public static boolean comprobarUsuario(String nombre,String password){
-        
+    public static boolean comprobarUsuario(String nombre, String password) {
+
+        List<Usuarios> listaUsuarios = new ArrayList<>();
+        listaUsuarios = listaUsuarios();
+        boolean encontrado = false;
+        for (Usuarios aux : listaUsuarios) {
+            if (aux.getNombre().equals(nombre)) {
+                if (aux.getPassword().equals(password)) {
+                    System.out.println("Si existe ese usuario en los registros");
+                    encontrado = true;
+                    break;
+                }
+            }
+        }
+
+        return encontrado;
     }
-    
+
 }
